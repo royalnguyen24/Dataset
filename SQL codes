@@ -1,0 +1,9 @@
+#selecting data
+SELECT * FROM tablename
+
+#create table
+CREATE TABLE tablename (
+  attribute_1 INT AUTO_INCREMENT PRIMARY KEY
+  attribute_2 VARCHAR(100)
+);
+
