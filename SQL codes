@@ -1,9 +1,113 @@
-#selecting data
+#SELECT data
+
 SELECT * FROM tablename
 
-#create table
+##create table
 CREATE TABLE tablename (
   attribute_1 INT AUTO_INCREMENT PRIMARY KEY
   attribute_2 VARCHAR(100)
 );
+
+##Creating tables:
+CREATE TABLE tablename	(		    
+  column_name data_type,	    
+  column_name data_type	);
+
+##Insert:
+INSERT INTO table_name(column_name) VALUES (data);
+
+##DELETE rows:
+DELETE FROM table name WHERE 
+
+##DELETES ALL DATA [ROWS]:
+DELETE FROM tablename 
+
+##UPDATE rows;
+UPDATE table name SET [change] WHERE [column name = ]
+
+##CONCAT:
+SELECT
+CONCAT_WS(' - ', title, author_fname, author_lname)
+FROM books;
+
+##DISTINCT:
+SELECT DISTINCT author_lname FROM books;
+
+SELECT DISTINCT author_fname, author_lname FROM books;
+
+##ORDER BY:
+SELECT author_lname, title
+FROM books ORDER BY 2;
+
+##LIMIT:
+SELECT title, author_fname, released_year 
+FROM books ORDER BY 3 
+DESC LIMIT 3,8;
+
+##LIKE:
+SELECT title FROM books WHERE title LIKE '%the%';
+
+##COUNT:
+SELECT released_year, COUNT(*) FROM books GROUP BY released_year;
+
+##MIN MAX:
+SELECT title, pages 
+FROM books
+WHERE pages = (SELECT Min(pages)FROM books); 
+
+SELECT * FROM booksORDER BY pages ASC LIMIT 1;
+
+SELECT
+CONCAT(author_fname, ' ', author_lname) AS author,	MAX(pages) AS 'longest book'
+FROM books
+GROUP BY author_lname,author_fname;
+
+SELECT author_fname, author_lname, AVG(released_year) 
+FROM books 
+GROUP BY author_lname, author_fname;
+	 
+SELECT CONCAT(author_fname, ' ', author_lname) FROM books
+WHERE pages = (SELECT Max(pages) FROM books);
+	 
+SELECT CONCAT(author_fname, ' ', author_lname) FROM books
+RDER BY pages DESC LIMIT 1;
+	 
+SELECT pages, CONCAT(author_fname, ' ', author_lname) FROM books
+ORDER BY pages DESC;
+
+SELECT released_year AS year,COUNT(*) AS '# of books',AVG(pages) AS 'avg pages’
+FROM books
+GROUP BY released_year;
+
+##DATE:
+SELECT DATE_FORMAT(birthdt, '%m/%d/%Y') FROM people;
+
+SELECT name, birthdate, DAYNAME(birthdate) FROM people;
+
+SELECT name, birthdate, DAYOFWEEK(birthdate) FROM people;
+
+SELECT name, birthdate, DAYOFYEAR(birthdate) FROM people;
+
+SELECT name, birthdt, MONTHNAME(birthdt) FROM people;
+
+SELECT name, birthdate, DATEDIFF(NOW(), birthdate) FROM people;
+
+select date_format(curdate(), '%m/%d/%Y');
+
+select date_format(now(), '%M %D at %h:%i');
+
+##LIKE: 
+
+SELECT title FROM books WHERE title LIKE 'W%';
+
+SELECT title FROM books WHERE title NOT LIKE 'W%';
+
+##BETWEEN:
+SELECT name, birthdt
+FROM people
+WHERE birthdt BETWEEN CAST('1980-01-01' AS DATETIME)AND CAST('2000-01-01' AS DATETIME);
+
+SELECT title, released_year FROM books
+WHERE released_year >= 2000 AND
+released_year % 2 != 0 ORDER BY released_year;
 
