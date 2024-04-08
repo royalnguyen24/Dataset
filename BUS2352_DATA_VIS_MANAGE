@@ -1,0 +1,8 @@
+### BUS 2353 - DATA VISUALIZATION AND MANAGEMENT ###
+##LEFT JOINS 
+
+SELECT * 
+FROM customers c
+LEFT OUTER JOIN emails e
+ON e.customer_id=c.customer_id
+WHERE e.customer_id IS NULL;
